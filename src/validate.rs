@@ -12,8 +12,8 @@ pub fn percent(s: &str) -> Result<f32, String> {
 }
 
 /// Check if user-supplied query-number value is valid
-pub fn query_number(s: &str) -> Result<u32, String> {
-    let p: u32 = s
+pub fn query_number(s: &str) -> Result<usize, String> {
+    let p: usize = s
         .parse()
         .map_err(|_| format!("`{}` isn't a valid u32 number", s))?;
 
@@ -58,7 +58,7 @@ mod tests {
 
     #[test]
     fn test_valid_number() -> Result<(), String> {
-        let cases: [(&str, u32); 3] = [("10", 10), ("1", 1), ("1000000000", 1_000_000_000)];
+        let cases: [(&str, usize); 3] = [("10", 10), ("1", 1), ("1000000000", 1_000_000_000)];
         for case in cases {
             assert_eq!(query_number(case.0)?, case.1);
         }

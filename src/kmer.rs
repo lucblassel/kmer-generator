@@ -4,7 +4,7 @@ use rand::Rng;
 pub fn generate(k: u8) -> String {
     let max_k: u64 = 1 << (2 * k);
     let mut rng = rand::thread_rng();
-    let num: u64 = rng.gen_range(0..max_k);
+    let num: u64 = rng.gen_range(0, max_k);
 
     decode(&num, k)
 }
@@ -44,6 +44,7 @@ pub fn decode(kmer: &u64, k: u8) -> String {
 
     char_v.iter().rev().collect()
 }
+
 
 #[cfg(test)]
 mod test {
